@@ -20,7 +20,8 @@ All source code is cleanly commented, separated and summarized.
 
 # How its structured
 The game stores each Cell and its position in a Dictionary. Each column is then subsequently put into its own Dictionary based on X Position. When a Gem is launched it only checks if its bounding box is colliding with a cell in its own column.
-Each Cell has positions referring to its neighbors, and whenever a cell is filled with a new gem, it performs a simple recursive flood fill algorithm with a Queue to detect a chain of 4 identical gems. If a chain is found, each gem in the chain recursively finds any gems of the same type that are "touching" the chain; then exploded. 
+Each Cell has positions referring to its neighbors, and whenever a cell is filled with a new gem, it performs a simple recursive flood fill algorithm with a Queue to detect a chain of 4 identical gems. If a chain is found, each gem in the chain recursively finds any gems of the same type that are "touching" the chain; then the chain explodes.
+
 Each column is then called upon to settle any floating gems. Settling cells is done recursively as well, from the bottom up.
 After settling, the same process of recursive chain checking + settling is performed until no valid chains of identical gems were found in that configuration.
 The game avoids iterating through or processing needless information when it can, but there's always improvements that can be made!
